@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
-import "./App.css";
 import { Button } from "@mui/material";
+import Header from "./components/Header";
 
 const QUERY = gql`
   query {
@@ -13,11 +13,7 @@ const QUERY = gql`
 function App() {
   const { loading, data, error } = useQuery(QUERY);
   console.log(data);
-  return (
-    <div className="App">
-      <Button variant="contained">Contained</Button>
-    </div>
-  );
+  return <Header />;
 }
 
 export default App;
