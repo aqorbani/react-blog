@@ -1,19 +1,14 @@
-import { gql, useQuery } from "@apollo/client";
-import { Button } from "@mui/material";
-import Header from "./components/Header";
-
-const QUERY = gql`
-  query {
-    authors {
-      name
-    }
-  }
-`;
+import Home from "./components/home/Home";
+import Layout from "./components/layouts/Layout";
 
 function App() {
-  const { loading, data, error } = useQuery(QUERY);
-  console.log(data);
-  return <Header />;
+  return (
+    <>
+      <Layout>
+        <Home />
+      </Layout>
+    </>
+  );
 }
 
 export default App;
