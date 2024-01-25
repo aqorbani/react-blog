@@ -30,6 +30,21 @@ const CommentForm = ({ slug }) => {
     }
   };
 
+  if (data) {
+    toast("کامنت با موفقیت ارسال شد", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+
+  if (error) return <h4>Error ...</h4>;
+
   return (
     <Grid
       container
@@ -73,9 +88,15 @@ const CommentForm = ({ slug }) => {
         />
       </Grid>
       <Grid item xs={12} m={2}>
-        <Button variant="contained" onClick={sendHandler}>
-          ارسال
-        </Button>
+        {!loading ? (
+          <Button variant="contained" onClick={sendHandler}>
+            ارسال
+          </Button>
+        ) : (
+          <Button variant="contained" disabled>
+            در حال ارسال
+          </Button>
+        )}
       </Grid>
     </Grid>
   );
