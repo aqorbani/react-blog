@@ -5,7 +5,6 @@ import CardEL from "../shared/CardEL";
 
 const Blogs = () => {
   const { loading, data, error } = useQuery(GET_BLOGS_DATA);
-  console.log(data);
 
   if (loading) return <h4>Loading ...</h4>;
   if (error) return <h4>Error ...</h4>;
