@@ -1,7 +1,8 @@
 import { useMutation } from "@apollo/client";
-import { Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { SEND_COMMENT } from "../../graphql/mutations";
+import { toast } from "react-toastify";
 
 const CommentForm = ({ slug }) => {
   const [name, setName] = useState("");
@@ -11,6 +12,23 @@ const CommentForm = ({ slug }) => {
   const [sendComment, { loading, data, error }] = useMutation(SEND_COMMENT, {
     variables: { name, email, text, slug },
   });
+
+  const sendHandler = () => {
+    if (name && email && text) {
+      sendComment();
+    } else {
+      toast("لطفا نام ، ایمیل و متن ایمیل را کامل نمایید.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <Grid
@@ -53,6 +71,11 @@ const CommentForm = ({ slug }) => {
           multiline
           onChange={(e) => setText(e.target.value)}
         />
+      </Grid>
+      <Grid item xs={12} m={2}>
+        <Button variant="contained" onClick={sendHandler}>
+          ارسال
+        </Button>
       </Grid>
     </Grid>
   );

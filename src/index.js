@@ -15,6 +15,10 @@ import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
 // Create rtl cache
 const cacheRtl = createCache({
   key: "muirtl",
@@ -33,6 +37,7 @@ root.render(
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CacheProvider value={cacheRtl}>
+            <ToastContainer />
             <App />
           </CacheProvider>
         </ThemeProvider>
