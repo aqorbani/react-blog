@@ -14,24 +14,26 @@ import { Link } from "react-router-dom";
 const CardEL = ({ title, cover, slug, author }) => {
   return (
     <Card sx={{ boxShadow: "rgba(0,0,0,0.1) 0px 4px 12px" }}>
-      <CardHeader
-        avatar={
-          <Avatar
-            src={author.avatar.url}
-            sx={{ marginLeft: 1, marginRight: "-20px" }}
-          />
-        }
-        title={
-          <Typography
-            component="p"
-            variant="P"
-            color="text.secondary"
-            fontSize="12px"
-          >
-            {author.name}
-          </Typography>
-        }
-      />
+      {author && (
+        <CardHeader
+          avatar={
+            <Avatar
+              src={author.avatar.url}
+              sx={{ marginLeft: 1, marginRight: "-20px" }}
+            />
+          }
+          title={
+            <Typography
+              component="p"
+              variant="P"
+              color="text.secondary"
+              fontSize="12px"
+            >
+              {author.name}
+            </Typography>
+          }
+        />
+      )}
       <CardMedia component="img" height="194" image={cover.url} alt={slug} />
       <CardContent>
         <Typography
