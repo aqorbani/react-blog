@@ -10,6 +10,17 @@ import { ThemeProvider } from "@mui/material";
 import theme from "./mui/theme";
 import { BrowserRouter } from "react-router-dom";
 
+import createCache from "@emotion/cache";
+import { prefixer } from "stylis";
+import rtlPlugin from "stylis-plugin-rtl";
+import { CacheProvider } from "@emotion/react";
+
+// Create rtl cache
+const cacheRtl = createCache({
+  key: "muirtl",
+  stylisPlugins: [prefixer, rtlPlugin],
+});
+
 const client = new ApolloClient({
   uri: process.env.REACT_APP_HYGRAPH,
   cache: new InMemoryCache(),
@@ -21,7 +32,9 @@ root.render(
     <ApolloProvider client={client}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <App />
+          <CacheProvider value={cacheRtl}>
+            <App />
+          </CacheProvider>
         </ThemeProvider>
       </BrowserRouter>
     </ApolloProvider>

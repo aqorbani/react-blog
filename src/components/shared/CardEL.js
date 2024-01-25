@@ -48,7 +48,7 @@ const CardEL = ({ title, cover, slug, author }) => {
       <Divider variant="middle" sx={{ margin: "10px" }} />
       <CardActions>
         <Link
-          to={`blogs/${slug}`}
+          to={`/blogs/${slug}`}
           style={{ textDecoration: "none", width: "100%" }}
         >
           <Button
