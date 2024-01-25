@@ -50,7 +50,12 @@ const CommentForm = ({ slug }) => {
       container
       mt={3}
       py={1}
-      sx={{ boxShadow: "rgbs(0,0,0,0.1) 0px 4px 12px", borderRadius: 4 }}
+      sx={{
+        boxShadow: "rgba(0,0,0,0.1) 0px 4px 12px",
+        borderRadius: 4,
+        py: 1,
+        mt: 8,
+      }}
     >
       <Grid item xs={12} m={2}>
         <Typography component="p" variant="h6" fontWeight={700} color="primary">

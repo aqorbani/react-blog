@@ -14,6 +14,7 @@ import {
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import sanitizeHtml from "sanitize-html";
 import CommentForm from "../comment/CommentForm";
+import Comments from "../comment/Comments";
 
 const Blog = () => {
   const { slug } = useParams();
@@ -80,6 +81,9 @@ const Blog = () => {
         </Grid>
         <Grid item xs={12} mt={5}>
           <CommentForm slug={data.post.slug} />
+        </Grid>
+        <Grid item xs={12} mt={5}>
+          <Comments slug={data.post.slug} />
         </Grid>
       </Grid>
     </Container>
